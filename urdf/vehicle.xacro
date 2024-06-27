@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <!-- load parameter -->
+  <xacro:property name="vehicle_info" value="${xacro.load_yaml('$(find bluespace_ai_xsens_mti_driver)/param/vehicle_info.param.yaml')}"/>
+
+  <!-- vehicle body -->
+  <link name="base_link">
+    <visual>
+      <!-- <origin xyz="${vehicle_info['/**']['ros__parameters']['wheel_base']/2.0} 0 -0.33205" rpy="0 0 0"/> -->
+      <origin xyz="0 0 -0.33205" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://bluespace_ai_xsens_mti_driver/urdf/nissan_leaf.dae" scale="1 1 1"/>
+      </geometry>
+    </visual>
+  </link>
+</robot>

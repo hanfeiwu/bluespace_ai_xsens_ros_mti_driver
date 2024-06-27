@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<robot name="nissan_leaf">
+  <link name="veh_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0.0016"/>
+      <geometry>
+        <mesh filename="package://bluespace_ai_xsens_mti_driver/urdf/nissan_leaf.dae" scale="1 1 1"/>
+      </geometry>
+      <material name="xsens_orange">
+        <color rgba="0.92 0.45 0.02 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="imu_link">
+    <visual>
+      <origin rpy="-1.57079632679 0 1.57079632679" xyz="0 0 0.0016"/>
+      <geometry>
+        <mesh filename="package://bluespace_ai_xsens_mti_driver/urdf/MTi_6xx.stl" scale="0.01 0.01 0.01"/>
+      </geometry>
+      <material name="xsens_orange">
+        <color rgba="0.92 0.45 0.02 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <link name="rslidar">
+    <visual>
+      <origin rpy="0 0 0.5411" xyz="0 0 0.07425"/>
+      <geometry>
+        <mesh filename="package://bluespace_ai_xsens_mti_driver/urdf/rs-ruby.dae" scale="0.002 0.002 0.002"/>
+      </geometry>
+      <material name="xsens_orange">
+        <color rgba="0.92 0.45 0.02 1.0"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="veh_joint" type="fixed">
+    <parent link="imu_link"/>
+    <child link="veh_link"/>
+    <origin rpy="0 0 0" xyz="0 0 0.0016"/>
+  </joint>
+
+    <joint name="RS_joint" type="fixed">
+      <!-- <xacro:insert_block name="origin"/> -->
+      <parent link="imu_link"/>
+      <child link="rslidar"/>
+      <origin rpy="0 0 0.5411" xyz="0 0 0.07425"/>
+    </joint>
+</robot>
+

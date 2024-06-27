@@ -195,6 +195,8 @@ bool XdaInterface::connectDevice()
 	// Check if scanning is enabled
 	bool scan_for_devices = false;
 	get_parameter("scan_for_devices", scan_for_devices);
+	
+	std::cout << "scan_for_devices = " << scan_for_devices << std::endl;
 
 	if (!scan_for_devices){
 		// Read baudrate parameter
